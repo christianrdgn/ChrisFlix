@@ -29,10 +29,11 @@ function CadastroCategoria() {
   }
 
   useEffect(() => {
-    console.log('Teste'); 
-    const URL = 'http://localhost:8080/categorias';
+    const URL = window.location.hostname.includess('localhost')
+      ? 'http://localhost:8080/categorias'
+      : 'https://chrissflix.herokuapp.com/categorias';
     fetch(URL)
-      .then( async (respostaDoServidor) => {
+      .then(async (respostaDoServidor) => {
         const resposta = await respostaDoServidor.json();
         setCategorias([
           ...resposta,
